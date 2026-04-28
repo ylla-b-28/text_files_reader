@@ -1,27 +1,17 @@
+def separate_even_and_odd(file_to_read):
+    with open(file_to_read, 'r')  as source_file:
+        number_data = source_file.readlines()
+
 #open the file
-numbers_file = open('numbers.txt', 'r')
-
-#create a list
-all_numbers_list = []
-
+with open ('even.txt', 'w') as even_file, open ('odd.txt', 'w') as odd_file:
 #read every line
-for line in numbers_file:
+    for line in number_data:
+        number_value = int(line.strip())
 
-    #strip
-    real_number = int(line.strip)
-    all_numbers_list.append(real_number)
-
-#open 2 files
-even_numbers_file = open('even_numbers.txt', 'w')
-odd_numbers_file = open('odd_numbers.txt', 'w')
-
-#decide where each number goes
-for current_number in all_numbers_list:
-    if current_number % 2 == 0:
-        even_numbers_file.write(str(current_number) + '\n')
+    if number_value % 2 == 0:
+        even_file.write(str(number_value) + '\n')
     else:
-        odd_numbers_file.write(current_number)
+        odd_file.write(str(number_value) + '\n')
 
-#close
-even_numbers_file.close()
-odd_numbers_file.close()
+separate_even_and_odd("numbers.txt")
+print("Files have been updated!")
