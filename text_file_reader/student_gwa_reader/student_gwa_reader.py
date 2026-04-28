@@ -1,18 +1,29 @@
-#open file
-student_file = open("students.txt", "r")
+def find_highest_gwa(filename):
+    best_gwa = -1.0
+    best_student_name = ""
 
-best_gwa = -1.0
-best_student_name = ""
+try:
+    with open(filename, "r") as input_file:
+        for current_line in input_file:
+            if not current_line.strip():
+                continue
 
-#split student name and gwa
-student_name =
-student_gwa =
+            data = current_line.strip().rsplit(",", 1)
 
-#check gwa if higher
-if student_gwa > best_gwa:
-    best_gwa = student_gwa
-    best_student_name = student_name
+            if len(data) == 2:
+               student_name = data[0].strip()
+               student_gwa = data[1].strip()
 
-student_file.close()
+               if student_gwa > best_gwa:
+                    best_gwa = student_gwa
+                    best_student_name = student_name
 
-print("The top student is", best_student_name, "with a GWA of", best_gwa)
+    if best_student_name:
+        print(f"Top Performer: {best_student_name} ({best_gwa})")
+
+except FileNotFoundError:
+        print("Error: students.txt not found.")
+except ValueError:
+        print("Error: Found a grade that isn't a number.")
+
+find_highest_gwa("students.txt")
