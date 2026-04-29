@@ -9,13 +9,13 @@ class OddEvenNumberSorter:
         self.color_green = "\033[92m"
         self.color_yellow = "\033[93m"
         self.text_bold = "\033[1m"
-        self.bg_blue = "\033[44m\033[37m"
+        self.purple_color = "\033[95m"
         self.reset_color = "\033[0m"
 
     def print_stylish_header(self):
-        print(self.bg_blue + "====================================" + self.reset_color)
+        print(self.purple_color + "====================================" + self.reset_color)
         print(self.text_bold + "      NUMBER PROCESSING SYSTEM      " + self.reset_color)
-        print(self.bg_blue + "====================================" + self.reset_color)
+        print(self.purple_color + "====================================" + self.reset_color)
 
     def sort_the_numbers(self):
         self.print_stylish_header()
@@ -33,16 +33,16 @@ class OddEvenNumberSorter:
                     single_number = int(line.strip())
 
                     if single_number % 2 == 0:
-                        even_file.write(str(number_value) + '\n')
+                        even_file.write(str(single_number) + '\n')
                         total_even_count += 1
                     else:
-                        odd_file.write(str(number_value) + '\n')
+                        odd_file.write(str(single_number) + '\n')
                         total_odd_count += 1
 
-            print(f"{self.text_green}STATUS: OPERATION COMPLETE{self.reset_color}")
+            print(f"{self.color_green}STATUS: OPERATION COMPLETE{self.reset_color}")
             print("-" * 36)
-            print(f"RESULT - Even Numbers Saved: {total_even_count}")
-            print(f"RESULT - Odd Numbers Saved: {total_odd_count}")
+            print(f"{self.color_blue}RESULT - Even Numbers Saved: {self.reset_color}{total_even_count}")
+            print(f"{self.color_green}RESULT - Odd Numbers Saved: {self.reset_color}{total_odd_count}")
             print("-" * 36)
 
         except FileNotFoundError:
