@@ -24,6 +24,9 @@ class MultiLineWriter:
                if user_choice == 'n':
                    is_running = False
 
+            print("-" * 30)
+            print(f"{self.green_color}Success: Lines saved to {self.target_filename}{self.reset}")
+
         except IOError:
             print(f"\033[91mError: Could not access {self.target_filename}{self.reset}")
 
