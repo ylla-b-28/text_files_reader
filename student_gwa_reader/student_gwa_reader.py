@@ -17,7 +17,7 @@ class StudentGwaReader:
     def find_highest_gwa(self):
         self.print_banner()
 
-        best_gwa = -1.0
+        best_gwa = 5.1
         best_student_name = ""
 
         try:
@@ -28,13 +28,13 @@ class StudentGwaReader:
                  if not line.strip():
                    continue
 
-              parts = line.strip().rsplit(",", 1)
+                 parts = line.strip().rsplit(",", 1)
 
-              if len(parts) == 2:
-                 student_name = parts[0].strip()
-                 student_gwa = parts[1].strip()
+                 if len(parts) == 2:
+                    student_name = parts[0].strip()
+                    student_gwa = float(parts[1].strip())
 
-                 if student_gwa > best_gwa:
+                 if student_gwa < best_gwa:
                     best_gwa = student_gwa
                     best_student_name = student_name
 
